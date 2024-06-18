@@ -10,12 +10,12 @@ script:
   - docker run -e CI=true srikar/react-test npm test
 
 after_success:
-  - docker build -t srikar/multi-client:latest ./client
-  - docker build -t srikar/multi-nginx:latest ./nginx
-  - docker build -t srikar/multi-server:latest ./server
-  - docker build -t srikar/multi-worker:latest ./worker
+  - docker build -t multi-client ./client
+  - docker build -t multi-nginx ./nginx
+  - docker build -t multi-server./server
+  - docker build -t multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push srikar/multi-client:latest
-  - docker push srikar/multi-nginx:latest
-  - docker push srikar/multi-server:latest
-  - docker push srikar/multi-worker:latest
+  - docker push multi-client
+  - docker push multi-nginx
+  - docker push multi-server
+  - docker push multi-worker
