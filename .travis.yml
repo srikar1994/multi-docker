@@ -13,3 +13,8 @@ after_success:
   - docker build -t srikar/multi-nginx ./nginx
   - docker build -t srikar/multi-server ./server
   - docker build -t srikar/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push srikar/multi-client
+  - docker push srikar/multi-nginx
+  - docker push srikar/multi-server
+  - docker push srikar/multi-worker
